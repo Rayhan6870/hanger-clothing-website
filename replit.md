@@ -1,45 +1,47 @@
-# [Project name]
+# HANGER Clothing Store
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A responsive, frontend-only HANGER menswear storefront with a persistent cart and WhatsApp ordering for customers in Bangladesh.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Run the managed `artifacts/hanger-storefront: web` workflow to preview the store.
+- `pnpm --filter @workspace/hanger-storefront run typecheck` — check the storefront TypeScript.
+- The storefront has no required environment secrets, backend, or database.
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- pnpm workspace, React, Vite, TypeScript, and Tailwind CSS
+- Client-side cart persistence with `localStorage`
+- WhatsApp `wa.me` links for quick-buy and checkout order messages
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/hanger-storefront/src/config.js` — brand, contact, address, and delivery settings
+- `artifacts/hanger-storefront/src/data/products.js` — the four product records
+- `artifacts/hanger-storefront/src/components/` — reusable checkout field
+- `artifacts/hanger-storefront/src/App.tsx` — storefront, cart, filters, and checkout behavior
+- `artifacts/hanger-storefront/src/index.css` — storefront styling
+- `artifacts/hanger-storefront/public/` — supplied HANGER logo and product photos
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Cart lines are keyed by both product and size so different sizes remain separate items.
+- Checkout sends order details to HANGER through WhatsApp; it does not process payments or persist orders on a server.
+- Brand, delivery, catalog, and cart behavior stay in the browser.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Customers can browse and filter HANGER shirts and polos, choose a size, build a cart, select a delivery area, and prepare a validated WhatsApp order.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the scope to the storefront features listed in the supplied brief. The user explicitly excluded a backend, database, login, and payment gateway, and requested no extra features.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Checkout requires a size on each product before add-to-cart or quick-buy.
+- WhatsApp is the order handoff; COD is only a selected payment preference and is not processed by this app.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See the `pnpm-workspace` skill for workspace structure and TypeScript setup.

@@ -1,0 +1,75 @@
+Build a modern, fast, fully responsive e-commerce website for a Bangladeshi men's clothing brand called "HANGER".
+
+## TECH STACK (follow strictly)
+- React + Vite + Tailwind CSS. Frontend only.
+- NO backend, NO database, NO login/authentication, NO payment gateway. All data lives in the frontend.
+- Cart must be saved in localStorage so it survives page refresh.
+- Keep the project clean: components in /src/components, product data in /src/data/products.js, config constants in /src/config.js.
+- Mobile-first. Make sure the app runs in the Replit preview and is ready to deploy.
+
+## CONFIG (put these in /src/config.js so I can edit easily)
+- BRAND_NAME: "HANGER"
+- TAGLINE: "STYLE THAT HANGS DIFFERENT"
+- WHATSAPP_NUMBER: "8801966684373" (display: +880 1966-684373)
+- FACEBOOK_URL: "https://www.facebook.com/HANGER26"
+- ADDRESS: "Alom Tower, 2nd Floor, Shop #24, Dhaka, Bangladesh"
+- DELIVERY_INSIDE_DHAKA: 70
+- DELIVERY_OUTSIDE_DHAKA: 130
+
+## DESIGN
+- Premium dark theme: background #0B0B0B / #141414, primary red #E10600, text white, muted grey #9A9A9A.
+- Logo: red & black circular badge with "HANGER" text, built with CSS/SVG (I will replace it with my real logo file later). Show the tagline near the logo.
+- Clean, high-end Bangladeshi fashion brand look. Google Font: Poppins or Inter. Rounded corners, subtle red glow on hover, smooth transitions.
+- Currency format: ৳2,140.
+- Fully responsive from 360px phones to desktop.
+
+## PRODUCTS (/src/data/products.js)
+Each product: id, name, category, fabric, price, sizes, image.
+1. Casual Full Shirt - Blue Check | Shirts | Indian Premium Fabric | ৳2,140 | M, L, XL
+2. Casual Full Shirt - Grey Check Pattern | Shirts | Indian Premium Fabric | ৳2,140 | M, L, XL
+3. Casual Full Shirt - Dark Grid Texture | Shirts | Indian Premium Fabric | ৳2,140 | M, L, XL
+4. Premium Stripe Polo T-Shirt - Sage Green / Navy Blue | T-Shirts / Polo | Premium China Fabric | ৳1,250 | M, L, XL
+Categories: "Casual Full Shirts (Premium Fabrics)" and "Stripe Polo T-Shirts (China Fabrics)".
+Images: use a styled gradient placeholder with the product name for now, and keep an `image` field where I can paste my real photo path/URL later.
+
+## BUILD IN THIS ORDER
+
+### Step 1: Layout, Header, Hero, Footer
+- Sticky header: logo + tagline, menu (Home, Shirts, T-Shirts / Polo, About Us, Contact Us), cart icon with item-count badge, and a green "Order on WhatsApp" button. Hamburger menu on mobile.
+- Hero: headline "Elevate Your Style with HANGER", short subtext, CTA buttons "Shop Shirts" and "Shop T-Shirts / Polos" that scroll to the matching products. Dark gradient background with red accents.
+- Footer: store location, WhatsApp link (https://wa.me/8801966684373), Facebook link, quick links, "© 2026 HANGER. All rights reserved."
+- Floating WhatsApp button at bottom-right.
+- About Us section (2-3 lines about quality fabrics and Dhaka-based style) and Contact Us section (address, WhatsApp, Facebook, Google Maps link for "Alom Tower Dhaka").
+
+### Step 2: Product catalog and filters
+- Category tabs and filters: Category, Price range slider, Size (M, L, XL), "Clear filters" button, and an empty-state message when nothing matches.
+- Product card: image, name, fabric tag, size badges, price, "Add to Cart" and "Quick Buy via WhatsApp" buttons.
+- The user must SELECT a size on the card before adding to cart or quick buying. If no size is selected, show a small error message.
+- Quick Buy opens WhatsApp with: "Hello HANGER! I want to order: {product name}, Size: {size}, Price: ৳{price}".
+- Hover effect: card lifts, red border glow, slight image zoom. Lazy-load images.
+
+### Step 3: Cart and checkout
+- Slide-out cart drawer from the right: item name, size, quantity (+/-), line price, remove button, subtotal, delivery charge, grand total (live updates). Same product in different sizes = separate lines. Empty-cart state with "Continue Shopping" button. Toast notification "Added to cart".
+- Checkout form with validation: Full Name, Phone Number (Bangladeshi format 01XXXXXXXXX, 11 digits), Full Delivery Address.
+- Delivery area: Inside Dhaka / Outside Dhaka (charges from config).
+- Payment option: "Cash on Delivery (COD)" or "Quick Order via WhatsApp".
+- On submit: show a confirmation modal (order summary, customer details, thank-you message), then open WhatsApp (wa.me with encodeURIComponent) to +8801966684373 with this format:
+
+  🛍️ *New Order - HANGER*
+  👤 Name: ...
+  📞 Phone: ...
+  📍 Address: ...
+  🚚 Delivery: Inside/Outside Dhaka (৳...)
+  💳 Payment: COD / WhatsApp
+  *Items:*
+  1. Product name | Size: L | Qty: 2 | ৳4,280
+  💰 *Total: ৳...*
+
+- Clear the cart after a successful order.
+
+### Step 4: Final checks
+- Test: add to cart, change quantity, remove item, filters, checkout validation, WhatsApp link, page refresh keeps cart.
+- Test on mobile width (360px) and fix any overflow or layout issue.
+- Add page title "HANGER | Style That Hangs Different" and meta description.
+
+Do not add extra features beyond this list. Keep code clean and commented.

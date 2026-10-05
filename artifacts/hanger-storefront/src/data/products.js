@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: "blue-check",
+    name: "Casual Full Shirt - Blue Check",
+    category: "Casual Full Shirts (Premium Fabrics)",
+    fabric: "Indian Premium Fabric",
+    price: 2140,
+    sizes: ["M", "L", "XL"],
+    image: "/products/blue-check.jpg",
+  },
+  {
+    id: "grey-check",
+    name: "Casual Full Shirt - Grey Check Pattern",
+    category: "Casual Full Shirts (Premium Fabrics)",
+    fabric: "Indian Premium Fabric",
+    price: 2140,
+    sizes: ["M", "L", "XL"],
+    image: "/products/grey-check.jpg",
+  },
+  {
+    id: "dark-grid",
+    name: "Casual Full Shirt - Dark Grid Texture",
+    category: "Casual Full Shirts (Premium Fabrics)",
+    fabric: "Indian Premium Fabric",
+    price: 2140,
+    sizes: ["M", "L", "XL"],
+    image: "/products/dark-grid.jpg",
+  },
+  {
+    id: "sage-polo",
+    name: "Premium Stripe Polo T-Shirt - Sage Green / Navy Blue",
+    category: "Stripe Polo T-Shirts (China Fabrics)",
+    fabric: "Premium China Fabric",
+    price: 1250,
+    sizes: ["M", "L", "XL"],
+    image: "/products/sage-stripe-polo.jpg",
+  },
+];
